@@ -214,33 +214,20 @@ document.addEventListener('DOMContentLoaded', () => {
         fadeInObserver.observe(videoWrapper);
     }
     
-    // YouTube video error detection
-    const youtubeIframe = document.getElementById('youtube-player');
-    if (youtubeIframe) {
-        youtubeIframe.addEventListener('load', function() {
-            // Check if video loaded successfully
-            setTimeout(() => {
-                try {
-                    // Try to access iframe content (will fail if video didn't load)
-                    const iframeDoc = youtubeIframe.contentDocument || youtubeIframe.contentWindow.document;
-                } catch (e) {
-                    // If we can't access, check for error
-                    const fallback = document.querySelector('.video-fallback');
-                    if (fallback && youtubeIframe.src.includes('rv001lgzLGw')) {
-                        // Video might have embedding disabled
-                        console.log('Video may not allow embedding');
-                    }
-                }
-            }, 2000);
-        });
-        
-        youtubeIframe.addEventListener('error', function() {
-            const fallback = document.querySelector('.video-fallback');
-            if (fallback) {
-                fallback.style.display = 'block';
-            }
-        });
-    }
+    // Social media posts
+    const socialPostItems = document.querySelectorAll('.social-post-item');
+    socialPostItems.forEach((item, index) => {
+        item.classList.add('fade-in');
+        staggerObserver.observe(item);
+    });
+    
+    // Event cards with stagger
+    const eventCards = document.querySelectorAll('.event-card');
+    eventCards.forEach((card, index) => {
+        card.classList.add('fade-in');
+        staggerObserver.observe(card);
+    });
+    
 });
 
 // Sticky Quote Button - Show/Hide on scroll
@@ -272,7 +259,7 @@ if (stickyQuoteBtn) {
 const contactForm = document.getElementById('contactForm');
 
 if (contactForm) {
-    contactForm.addEventListener('submit', (e) => {
+    contactForm.addEventListener('submit', async (e) => {
         e.preventDefault();
         
         // Get form values
@@ -283,15 +270,42 @@ if (contactForm) {
             projectDetails: document.getElementById('project-details').value
         };
         
-        // Here you would typically send the data to a server
-        // For now, we'll just show an alert
-        console.log('Form submitted:', formData);
+        // Show loading state
+        const submitBtn = contactForm.querySelector('button[type="submit"]');
+        const originalText = submitBtn.textContent;
+        submitBtn.textContent = 'Sending...';
+        submitBtn.disabled = true;
         
-        // Show success message
-        alert('Thank you for your inquiry! We will get back to you soon to discuss your tunneling project.');
-        
-        // Reset form
-        contactForm.reset();
+        // Using Formspree to send email
+        try {
+            const response = await fetch('https://formspree.io/f/xnjnzynd', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    name: formData.name,
+                    email: formData.email,
+                    phone: formData.phone,
+                    message: formData.projectDetails,
+                    _subject: 'New Inquiry from DHANVI Website'
+                })
+            });
+            
+            if (response.ok) {
+                alert('Thank you for your inquiry! We have received your message and will get back to you soon.');
+                contactForm.reset();
+            } else {
+                const errorData = await response.json();
+                throw new Error(errorData.error || 'Failed to send message');
+            }
+        } catch (error) {
+            console.error('Form submission error:', error);
+            alert('There was an error sending your message. Please try again or contact us directly at dhanvitpc@gmail.com');
+        } finally {
+            submitBtn.textContent = originalText;
+            submitBtn.disabled = false;
+        }
     });
 }
 
