@@ -228,6 +228,46 @@ document.addEventListener('DOMContentLoaded', () => {
         staggerObserver.observe(card);
     });
     
+    // Project cards with stagger
+    const projectCards = document.querySelectorAll('.project-card');
+    projectCards.forEach((card, index) => {
+        card.classList.add('fade-in');
+        staggerObserver.observe(card);
+    });
+    
+    // Projects tab functionality
+    const projectTabs = document.querySelectorAll('.project-tab');
+    const projectTabContents = document.querySelectorAll('.project-tab-content');
+    
+    projectTabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+            const targetTab = tab.getAttribute('data-tab');
+            
+            // Remove active class from all tabs and contents
+            projectTabs.forEach(t => t.classList.remove('active'));
+            projectTabContents.forEach(content => content.classList.remove('active'));
+            
+            // Add active class to clicked tab
+            tab.classList.add('active');
+            
+            // Show corresponding content
+            const targetContent = document.getElementById(`${targetTab}-projects`);
+            if (targetContent) {
+                targetContent.classList.add('active');
+                
+                // Re-observe project cards for animation
+                const cards = targetContent.querySelectorAll('.project-card');
+                cards.forEach((card, index) => {
+                    card.classList.remove('visible');
+                    setTimeout(() => {
+                        card.classList.add('fade-in');
+                        staggerObserver.observe(card);
+                    }, 100);
+                });
+            }
+        });
+    });
+    
 });
 
 // Sticky Quote Button - Show/Hide on scroll

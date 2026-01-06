@@ -33,9 +33,9 @@
                     <li><a href="#home" class="nav-link">Home</a></li>
                     <li><a href="#about" class="nav-link">About</a></li>
                     <li><a href="#services" class="nav-link">Services</a></li>
-                    <li><a href="#video" class="nav-link">Video</a></li>
-                    <li><a href="#social-media" class="nav-link">Latest Updates</a></li>
+                    <li><a href="#projects" class="nav-link">Projects</a></li>
                     <li><a href="#gallery" class="nav-link">Gallery</a></li>
+                    <li><a href="#social-media" class="nav-link">Latest Updates</a></li>
                     <li><a href="#why-choose-us" class="nav-link">Why Choose Us</a></li>
                     <li><a href="#contact" class="nav-link">Contact</a></li>
                 </ul>
@@ -57,11 +57,11 @@
                 <p class="hero-subtitle">Delivering precision tunneling solutions across soft soil, mixed ground, and hard rock conditions.</p>
                 <div class="hero-buttons">
                     <a href="#services" class="btn btn-primary">Our Services</a>
-                    <a href="#video" class="btn btn-secondary">Demo</a>
+                    <a href="#projects" class="btn btn-secondary">Our Projects</a>
                 </div>
             </div>
         </div>
-        <div class="scroll-indicator">
+        <div class="scroll-indicator" onclick="document.getElementById('about').scrollIntoView({behavior: 'smooth'})">
             <span></span>
         </div>
     </section>
@@ -156,14 +156,14 @@
                         <p>Expert railway crossing solutions using advanced tunneling techniques. Safe and efficient underground passages that ensure minimal disruption to rail operations.</p>
                     </div>
                 </div>
-                <div class="service-card">  
+                <div class="service-card">
                     <!--<div class="service-icon">🛣️</div>-->
                     <div class="service-image">
                         <img src="img/service-highway.png" alt="Highway and Canal crossing" class="service-img">
                     </div>
                     <div class="service-content">
-                        <h3>Highway & Canal By Manual Pushing</h3>
-                        <p>Specialized manual pushing techniques for highway and canal crossings. Precise execution ensuring structural integrity and minimal surface impact.</p>
+                        <h3>Highway & Canal By Micro Tunneling Pushing</h3>
+                        <p>Specialized pushing techniques for highway and canal crossings. Precise execution ensuring structural integrity and minimal surface impact.</p>
                     </div>
                 </div>
                 <div class="service-card">
@@ -190,18 +190,116 @@
         </div>
     </section>
 
-    <!-- Social Media Posts Section -->
-    <section id="social-media" class="social-media">
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title">Latest Updates</h2>
-                <p class="section-subtitle">Follow us on Social Media</p>
+                <h2 class="section-title">Ongoing & Completed Projects</h2>
+                <p class="section-subtitle">Our Portfolio of Successful Tunneling Projects</p>
             </div>
-            <div class="social-posts-grid">
-                <div class="social-post-item">
-                    <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7407099759536140288?collapsed=1" height="856" width="504" frameborder="0" allowfullscreen="" title="Embedded post" class="social-embed"></iframe>
+            <div class="projects-tabs">
+                <button class="project-tab active" data-tab="ongoing">Ongoing Projects</button>
+                <button class="project-tab" data-tab="completed">Completed Projects</button>
+            </div>
+            <div class="projects-content">
+                <div class="project-tab-content active" id="ongoing-projects">
+                    <div class="projects-grid">
+                        <div class="project-card">
+                            <div class="project-image">
+                                <img src="img/project-ongoing-1.jpg" alt="Ongoing Project 1" class="project-img">
+                                <span class="project-status ongoing">Ongoing</span>
+                            </div>
+                            <div class="project-content">
+                                <h3>Urban Metro Rail Crossing</h3>
+                                <p class="project-location">📍 Mumbai, Maharashtra</p>
+                                <p class="project-description">Micro tunneling project for metro rail crossing with 1200mm diameter pipeline installation.</p>
+                                <div class="project-details">
+                                    <span class="project-detail-item">Diameter: 1200mm</span>
+                                    <span class="project-detail-item">Length: 150m</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-card">
+                            <div class="project-image">
+                                <img src="img/project-ongoing-2.jpg" alt="Ongoing Project 2" class="project-img">
+                                <span class="project-status ongoing">Ongoing</span>
+                            </div>
+                            <div class="project-content">
+                                <h3>Highway Underpass Installation</h3>
+                                <p class="project-location">📍 Delhi NCR</p>
+                                <p class="project-description">Trenchless installation beneath major highway using pipe jacking technique.</p>
+                                <div class="project-details">
+                                    <span class="project-detail-item">Diameter: 800mm</span>
+                                    <span class="project-detail-item">Length: 200m</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-card">
+                            <div class="project-image">
+                                <img src="img/project-ongoing-3.jpg" alt="Ongoing Project 3" class="project-img">
+                                <span class="project-status ongoing">Ongoing</span>
+                            </div>
+                            <div class="project-content">
+                                <h3>Water Supply Pipeline</h3>
+                                <p class="project-location">📍 Vadodara, Gujarat</p>
+                                <p class="project-description">Micro tunneling for water supply network expansion in urban area.</p>
+                                <div class="project-details">
+                                    <span class="project-detail-item">Diameter: 1000mm</span>
+                                    <span class="project-detail-item">Length: 180m</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <!-- Add more social media posts here -->
+                <div class="project-tab-content" id="completed-projects">
+                    <div class="projects-grid">
+                        <div class="project-card">
+                            <div class="project-image">
+                                <img src="img/project-completed-1.jpg" alt="Completed Project 1" class="project-img">
+                                <span class="project-status completed">Completed</span>
+                            </div>
+                            <div class="project-content">
+                                <h3>Railway Crossing Project</h3>
+                                <p class="project-location">📍 Ahmedabad, Gujarat</p>
+                                <p class="project-description">Successfully completed railway crossing using micro tunneling technology.</p>
+                                <div class="project-details">
+                                    <span class="project-detail-item">Diameter: 1500mm</span>
+                                    <span class="project-detail-item">Completed: 2023</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-card">
+                            <div class="project-image">
+                                <img src="img/project-completed-2.jpg" alt="Completed Project 2" class="project-img">
+                                <span class="project-status completed">Completed</span>
+                            </div>
+                            <div class="project-content">
+                                <h3>Sewer Line Installation</h3>
+                                <p class="project-location">📍 Surat, Gujarat</p>
+                                <p class="project-description">Underground sewer line installation with minimal surface disruption.</p>
+                                <div class="project-details">
+                                    <span class="project-detail-item">Diameter: 600mm</span>
+                                    <span class="project-detail-item">Completed: 2023</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-card">
+                            <div class="project-image">
+                                <img src="img/project-completed-3.jpg" alt="Completed Project 3" class="project-img">
+                                <span class="project-status completed">Completed</span>
+                            </div>
+                            <div class="project-content">
+                                <h3>Canal Crossing Project</h3>
+                                <p class="project-location">📍 Rajkot, Gujarat</p>
+                                <p class="project-description">Pipe jacking project for canal crossing with precision execution.</p>
+                                <div class="project-details">
+                                    <span class="project-detail-item">Diameter: 900mm</span>
+                                    <span class="project-detail-item">Completed: 2024</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -232,6 +330,22 @@
                 <div class="gallery-item">
                     <img src="img/team.jpg" alt="Micro tunneling machine operation" class="gallery-img">
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Media Posts Section -->
+    <section id="social-media" class="social-media">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Latest Updates</h2>
+                <p class="section-subtitle">Follow us on Social Media</p>
+            </div>
+            <div class="social-posts-grid">
+                <div class="social-post-item">
+                    <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7407099759536140288?collapsed=1" height="856" width="504" frameborder="0" allowfullscreen="" title="Embedded post" class="social-embed"></iframe>
+                </div>
+                <!-- Add more social media posts here -->
             </div>
         </div>
     </section>
@@ -445,9 +559,10 @@
                         <li><a href="#home">Home</a></li>
                         <li><a href="#about">About</a></li>
                         <li><a href="#services">Services</a></li>
-                        <li><a href="#video">Video</a></li>
+                        <li><a href="#projects">Projects</a></li>
                         <li><a href="#gallery">Gallery</a></li>
-                        <li><a href="#events">Events</a></li>
+                        <li><a href="#social-media">Latest Updates</a></li>
+                        <li><a href="#why-choose-us">Why Choose Us</a></li>
                         <li><a href="#contact">Contact</a></li>
                     </ul>
                 </div>
@@ -455,7 +570,7 @@
                     <h4>Services</h4>
                     <ul>
                         <li>Crossing of Railway</li>
-                        <li>Highway & Canal By Manual Pushing</li>
+                        <li>Highway & Canal By Micro Tunneling Pushing</li>
                         <li>Pipe Jacking</li>
                         <li>Microtunneling Various Diameter</li>
                     </ul>
